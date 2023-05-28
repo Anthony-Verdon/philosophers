@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../../includes/philosophers_bonus.h"
 
 void	print_message(t_philo *philo)
 {

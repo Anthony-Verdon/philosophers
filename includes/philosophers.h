@@ -6,7 +6,7 @@
 /*   By: averdon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 09:57:52 by averdon           #+#    #+#             */
-/*   Updated: 2023/01/18 14:42:58 by averdon          ###   ########.fr       */
+/*   Updated: 2023/05/28 18:12:32 by averdon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include <semaphore.h> 
-# include <sys/wait.h>
-# include <fcntl.h>
-# include "utils/utils.h"
+# include "utils.h"
 
 # define EATING 1
 # define START_THINKING 2
@@ -47,12 +44,10 @@ typedef struct s_context {
 	int				nb_meal_to_eat;
 	long			time_start_simulation;
 	long			actual_time_simulation;
-	int				*array_id;
-	sem_t			*forks;
-	sem_t			*one_philo_died;
-	sem_t			*nb_philo_ate_required_meal;
-	sem_t			*priority;
-	sem_t			*print_program;
+	pthread_mutex_t	check_philo_dead;
+	bool			one_philo_is_dead;
+	pthread_mutex_t	add_to_ate_required_meal;
+	int				nb_philo_ate_required_meal;
 }	t_context;
 
 typedef struct s_philo {
@@ -60,8 +55,9 @@ typedef struct s_philo {
 	int				state;
 	int				nb_meal_eaten;
 	int				last_meal_eat;
-	int				nb_fork_hold;
 	t_context		*context;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	right_fork;
 }	t_philo;
 
 int		parsing(int argc, char **argv);
@@ -73,6 +69,4 @@ long	calculate_time(void);
 void	print_message(t_philo *philo);
 void	ft_usleep(long time_to_wait, t_philo *philo);
 void	init_struct(int argc, char **argv, t_context *context);
-void	init_philo(t_philo *philo, int i, t_context context);
-void	create_thread(t_context *context);
 #endif

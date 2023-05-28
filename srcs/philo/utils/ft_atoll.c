@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../../../includes/philosophers.h"
 
 int	overflow(int number)
 {

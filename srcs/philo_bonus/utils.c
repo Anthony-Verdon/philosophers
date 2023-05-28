@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../../includes/philosophers_bonus.h"
 
 long	calculate_time(void)
 {

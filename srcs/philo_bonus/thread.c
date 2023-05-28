@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../../includes/philosophers_bonus.h"
 
 void	*check_philo_dead(void *arg)
 {

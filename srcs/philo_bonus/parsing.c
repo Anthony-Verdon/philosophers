@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../../includes/philosophers_bonus.h"
 
 int	parsing(int argc, char **argv)
 {

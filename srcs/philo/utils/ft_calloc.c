@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philosophers.h"
+#include "../../../includes/philosophers.h"
 
 void	ft_bzero(void *s, int n)
 {

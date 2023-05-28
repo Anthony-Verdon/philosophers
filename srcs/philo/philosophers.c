@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../../includes/philosophers.h"
 
 int	is_philo_dead(t_philo *philo)
 {
